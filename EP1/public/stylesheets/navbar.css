@@ -1,0 +1,49 @@
+.navbar {
+    height: 45px; 
+    background: url("img/Winter-Commerce.png") no-repeat center center;
+    background-size: cover; 
+}
+
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    height: 100%; 
+    color: #ffffff; 
+}
+
+
+.nav-link {
+    padding-top: 15px; 
+    padding-bottom: 0px; 
+    color: #ffffff; 
+}
+
+.navbar-collapse {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .container-fluid {
+    height: 100%;
+}
+
+.navbar-toggler {
+    align-self: center;
+}
+
+.navbar .navbar-nav .nav-item .nav-link {
+    color: #ffffff; 
+    font-weight: 400;
+}
+
+
+.navbar .navbar-nav .nav-item .nav-link:hover {
+    color: #cccccc; 
+}
+
+.navbar .navbar-brand, 
+.navbar .navbar-nav .nav-item .nav-link {
+    text-shadow: 4px 4px 8px rgba(28, 138, 223, 0.75);
+}
+

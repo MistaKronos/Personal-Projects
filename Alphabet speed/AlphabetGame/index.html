@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alphabet Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-top">
+      <a class="back-link" href="../../index.html">← Back to JobbSide</a>
+      <h1>Alphabet Game</h1>
+    </div>
+    <p class="subtitle">Type the alphabet in order as fast as possible. Use your keyboard or click letters to play.</p>
+  </header>
+
+  <main class="main-grid">
+    <section class="game-panel">
+      <div class="panel panel-controls">
+        <div class="control-row">
+          <label for="player-name">Player name</label>
+          <input id="player-name" type="text" placeholder="Enter your name" maxlength="20" value="Guest">
+        </div>
+        <div class="control-row action-row">
+          <button id="start-btn" class="action-button">Start game</button>
+          <button id="restart-btn" class="action-button secondary">Reset</button>
+        </div>
+        <div class="control-row timer-row">
+          <span class="timer-label">Timer</span>
+          <strong id="timer">00:00.000</strong>
+        </div>
+        <div class="control-row timer-row">
+          <span class="timer-label">Attempts</span>
+          <strong id="attempt-count">0</strong>
+        </div>
+        <div class="control-row">
+          <p id="status" class="status-text">Press Start or type the letter A to begin.</p>
+        </div>
+        <div class="control-row progress-row">
+          <span>Next letter:</span>
+          <strong id="next-letter">A</strong>
+        </div>
+      </div>
+
+      <div class="panel panel-keyboard" id="alphabet">
+        <button class="letter" data-letter="A">A</button>
+        <button class="letter" data-letter="B">B</button>
+        <button class="letter" data-letter="C">C</button>
+        <button class="letter" data-letter="D">D</button>
+        <button class="letter" data-letter="E">E</button>
+        <button class="letter" data-letter="F">F</button>
+        <button class="letter" data-letter="G">G</button>
+        <button class="letter" data-letter="H">H</button>
+        <button class="letter" data-letter="I">I</button>
+        <button class="letter" data-letter="J">J</button>
+        <button class="letter" data-letter="K">K</button>
+        <button class="letter" data-letter="L">L</button>
+        <button class="letter" data-letter="M">M</button>
+        <button class="letter" data-letter="N">N</button>
+        <button class="letter" data-letter="O">O</button>
+        <button class="letter" data-letter="P">P</button>
+        <button class="letter" data-letter="Q">Q</button>
+        <button class="letter" data-letter="R">R</button>
+        <button class="letter" data-letter="S">S</button>
+        <button class="letter" data-letter="T">T</button>
+        <button class="letter" data-letter="U">U</button>
+        <button class="letter" data-letter="V">V</button>
+        <button class="letter" data-letter="W">W</button>
+        <button class="letter" data-letter="X">X</button>
+        <button class="letter" data-letter="Y">Y</button>
+        <button class="letter" data-letter="Z">Z</button>
+      </div>
+    </section>
+
+    <aside class="sidebar">
+      <section class="panel">
+        <h2>Game features</h2>
+        <ul>
+          <li>Keyboard or click gameplay.</li>
+          <li>Auto timer start on the first correct letter.</li>
+          <li>Local leaderboard saved in your browser.</li>
+          <li>Quick restart with one button.</li>
+        </ul>
+      </section>
+
+      <section class="panel leaderboard-panel">
+        <h2>Top scores</h2>
+        <div class="leaderboard-summary">
+          <span>Best time</span>
+          <strong id="best-time">--:--.---</strong>
+        </div>
+        <ol id="leaderboard" class="leaderboard-list"></ol>
+        <p class="history-note">Only the top 5 scores are stored locally in this browser.</p>
+      </section>
+    </aside>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
