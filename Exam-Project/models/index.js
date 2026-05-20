@@ -4,14 +4,16 @@ const path = require("path");
 const basename = path.basename(__filename);
 require("dotenv").config();
 
-// Use local database first, fall back to Clever Cloud
+// Railway vars take priority, then local .env vars, then Clever Cloud fallback
 const connection = {
-  database: process.env.DATABASE_NAME || process.env.MYSQL_ADDON_DB,
-  username: process.env.DB_USER || process.env.MYSQL_ADDON_USER,
-  password: process.env.DB_PASSWORD !== undefined ? process.env.DB_PASSWORD : process.env.MYSQL_ADDON_PASSWORD,
-  host: process.env.HOST || process.env.MYSQL_ADDON_HOST,
-  dialect: process.env.DIALECT,
-  dialectmodel: process.env.DIALECTMODEL,
+  database: process.env.MYSQLDATABASE || process.env.DATABASE_NAME || process.env.MYSQL_ADDON_DB,
+  username: process.env.MYSQLUSER || process.env.DB_USER || process.env.MYSQL_ADDON_USER,
+  password: process.env.MYSQLPASSWORD !== undefined ? process.env.MYSQLPASSWORD :
+            (process.env.DB_PASSWORD !== undefined ? process.env.DB_PASSWORD : process.env.MYSQL_ADDON_PASSWORD),
+  host: process.env.MYSQLHOST || process.env.HOST || process.env.MYSQL_ADDON_HOST,
+  port: process.env.MYSQLPORT || process.env.MYSQL_ADDON_PORT || 3306,
+  dialect: process.env.DIALECT || "mysql",
+  dialectmodel: process.env.DIALECTMODEL || "mysql2",
 };
 const sequelize = new Sequelize(connection);
 const db = {};

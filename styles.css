@@ -52,6 +52,36 @@ h1 {
   line-height: 1.75;
 }
 
+.social-links {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(36, 74, 138, 0.2);
+  color: #264d83;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.social-link:hover,
+.social-link:focus-visible {
+  background: white;
+  border-color: rgba(36, 74, 138, 0.35);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(36, 74, 138, 0.12);
+}
+
 .site-menu {
   display: flex;
   flex-wrap: wrap;
@@ -166,6 +196,13 @@ h1 {
   font-family: "Courier New", monospace;
 }
 
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: auto;
+}
+
 .button {
   align-self: flex-start;
   display: inline-flex;
@@ -184,6 +221,18 @@ h1 {
 .button:focus-visible {
   transform: translateY(-1px);
   background: #2756b2;
+}
+
+.button.button-outline {
+  background: transparent;
+  border: 2px solid rgba(63, 116, 214, 0.4);
+  color: #264d83;
+}
+
+.button.button-outline:hover,
+.button.button-outline:focus-visible {
+  background: rgba(63, 116, 214, 0.08);
+  border-color: rgba(63, 116, 214, 0.7);
 }
 
 .button.disabled {
@@ -207,5 +256,10 @@ h1 {
 
   .cards-grid {
     grid-template-columns: 1fr;
+  }
+
+  .social-links {
+    flex-direction: column;
+    align-items: center;
   }
 }
