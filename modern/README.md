@@ -13,7 +13,7 @@ The modern implementations demonstrate:
 
 ## Projects
 
-### SP1 Modern Stack
+### Semester Project Modern Stack
 - **Framework**: React 18+
 - **Language**: TypeScript
 - **Build Tool**: Vite
@@ -26,7 +26,7 @@ The modern implementations demonstrate:
   - Improved performance
   - Comprehensive test coverage
 
-### EP1 Modern Stack
+### Exam Project Modern Stack
 - **Framework**: NestJS
 - **Language**: TypeScript
 - **Database**: PostgreSQL / MySQL
@@ -41,11 +41,11 @@ The modern implementations demonstrate:
 
 ## Development Plan
 
-- [ ] SP1 Modern: Frontend rebuild with React + TS
-- [ ] SP1 Modern: Playwright test suite
-- [ ] EP1 Modern: Backend rebuild with NestJS
-- [ ] EP1 Modern: Complete API documentation
-- [ ] EP1 Modern: Full test coverage
+- [ ] Semester Project Modern: Frontend rebuild with React + TS
+- [ ] Semester Project Modern: Playwright test suite
+- [ ] Exam Project Modern: Backend rebuild with NestJS
+- [ ] Exam Project Modern: Complete API documentation
+- [ ] Exam Project Modern: Full test coverage
 - [ ] Integration: Connect modern versions
 
 ## Status: 🚧 In Progress

@@ -1,4 +1,4 @@
-# SindreSteen_Andersen_SP1
+# Semester Project Web Application
 Semester Project - Receptionist program
 
 

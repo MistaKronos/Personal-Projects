@@ -15,10 +15,10 @@ JobbSide/
 │   ├── script.js                       # Includes localStorage for scores
 │   └── style.css
 │
-├── SP1/                                # Classic: Semester Project (original)
-│   └── SindreSteen_Andersen_SP1/WebApplication/HTML/index.html
+├── Semester-Project/                                # Classic: Semester Project (original)
+│   └── Classic/WebApplication/HTML/index.html
 │
-├── EP1/                                # Classic: Exam Project (Node.js/Express)
+├── Exam-Project/                                # Classic: Exam Project (Node.js/Express)
 │   ├── app.js
 │   ├── package.json
 │   ├── models/                         # Database models
@@ -30,15 +30,15 @@ JobbSide/
 │   ├── playwright/README.md            # E2E test examples
 │   └── api/README.md                   # API testing patterns
 └── modern/                             # (Planned) Modern implementations
-    ├── SP1-modern/                     # React/TypeScript rebuild
-    └── EP1-modern/                     # NestJS rebuild with tests
+    ├── Semester-Project-modern/                     # React/TypeScript rebuild
+    └── Exam-Project-modern/                     # NestJS rebuild with tests
 ```
 
 ## 🎯 What This Shows
 
 ### Academic Foundation
-- **SP1**: Pure frontend work—HTML, CSS, JavaScript fundamentals
-- **EP1**: Backend development—Node.js, Express, database design, API development
+- **Semester Project**: Pure frontend work—HTML, CSS, JavaScript fundamentals
+- **Exam Project**: Backend development—Node.js, Express, database design, API development
 
 ### Modern Engineering
 - **Testing & QA**: Automated test examples (Playwright, Jest, API testing)
@@ -56,9 +56,9 @@ JobbSide/
 open index.html
 ```
 
-### Run EP1 (Node/Express)
+### Run Exam Project (Node/Express)
 ```bash
-cd EP1
+cd Exam-Project
 npm install
 npm start
 # Visit http://localhost:3000
@@ -114,7 +114,7 @@ This portfolio is designed to demonstrate:
 
 ## 📝 Notes
 
-- EP1 is a full-stack project; run it locally to see the backend API
+- Exam Project is a full-stack project; run it locally to see the backend API
 - Testing examples include real test patterns and QA strategies
 - Modern versions are under development (stubs available)
 - Alphabet Game demonstrates vanilla JavaScript and browser storage
