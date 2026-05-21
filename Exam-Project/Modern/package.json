@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "prisma generate && vite build",
+    "start": "prisma db push && prisma db seed && node build",
     "preview": "node build",
     "db:push": "prisma db push",
     "db:seed": "prisma db seed",
