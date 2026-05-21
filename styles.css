@@ -180,6 +180,12 @@ h1 {
   font-size: 0.95rem;
 }
 
+.notice {
+  font-size: 0.75rem;
+  color: #888;
+  margin: 0 !important;
+}
+
 .tech-tags {
   display: flex;
   flex-wrap: wrap;
