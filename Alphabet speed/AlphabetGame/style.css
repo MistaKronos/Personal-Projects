@@ -61,7 +61,7 @@ input {
   grid-template-columns: 1.8fr 1fr;
   gap: 24px;
   max-width: 1180px;
-  margin: -40px auto 40px;
+  margin: 24px auto 40px;
   padding: 0 24px 24px;
 }
 
@@ -69,6 +69,7 @@ input {
 .sidebar {
   display: grid;
   gap: 18px;
+  align-self: start;
 }
 
 .panel {
@@ -258,6 +259,8 @@ input#player-name {
   margin: 0;
   display: grid;
   gap: 10px;
+  max-height: 280px;
+  overflow-y: auto;
 }
 
 .leaderboard-row {
