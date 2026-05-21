@@ -1,0 +1,8 @@
+import { PrismaClient } from '@prisma/client';
+
+const globalForPrisma = globalThis;
+const prisma = globalForPrisma.prisma ?? new PrismaClient();
+if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
+
+export { prisma as p };
+//# sourceMappingURL=db-DV7qvZ4L.js.map
