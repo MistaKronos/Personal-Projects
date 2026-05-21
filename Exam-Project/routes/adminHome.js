@@ -14,6 +14,10 @@ const OrderService = require("../services/OrderService");
 const orderService = new OrderService(db);
 
 
+router.get("/login", (req, res) => {
+  res.render("ecommerce", { title: "Admin Login", user: null });
+});
+
 router.get("/", authenticateJWT, isAdmin, (req, res) => {
   res.render("adminHome", { title: "Admin Dashboard", user: req.user });
 });
