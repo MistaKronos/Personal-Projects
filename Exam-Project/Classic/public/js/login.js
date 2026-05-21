@@ -1,20 +1,19 @@
 function showError(msg) {
   const el = document.getElementById("error-msg");
   el.textContent = msg;
-  el.hidden = false;
+  el.style.visibility = "visible";
 }
 
 function clearError() {
   const el = document.getElementById("error-msg");
-  el.hidden = true;
-  el.textContent = "";
+  el.style.visibility = "hidden";
+  el.textContent = " ";
 }
 
 function quickLogin(email, password) {
   document.getElementById("email").value = email;
   document.getElementById("password").value = password;
   clearError();
-  document.getElementById("login-form").requestSubmit();
 }
 
 document.getElementById("login-form").addEventListener("submit", async function (e) {
