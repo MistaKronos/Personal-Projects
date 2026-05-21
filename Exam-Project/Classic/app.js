@@ -30,8 +30,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-
-app.get("/", (req, res) => res.redirect("/admin/login"));
+app.use(express.static(path.join(__dirname, "../.."), { dotfiles: "deny", index: "index.html" }));
 
 app.use("/ecommerce", ecommerceRouter);
 app.use("/", authRouter);
