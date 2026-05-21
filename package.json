@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "postinstall": "cd Exam-Project && npm install",
-    "start": "node Exam-Project/bin/www"
+    "postinstall": "cd Exam-Project/Classic && npm install",
+    "start": "node Exam-Project/Classic/bin/www"
   },
   "engines": {
     "node": ">=18"
