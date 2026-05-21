@@ -9,6 +9,10 @@ const bodyParser = require("body-parser");
 router.use(bodyParser.json());
 
 
+router.get("/", (req, res) => {
+  res.redirect("/admin/login");
+});
+
 router.post("/login", async (req, res, next) => {
   const { email, password } = req.body;
 
