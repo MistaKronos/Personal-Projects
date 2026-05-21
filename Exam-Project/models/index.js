@@ -4,18 +4,23 @@ const path = require("path");
 const basename = path.basename(__filename);
 require("dotenv").config();
 
-// Railway vars take priority, then local .env vars, then Clever Cloud fallback
-const connection = {
-  database: process.env.MYSQLDATABASE || process.env.DATABASE_NAME || process.env.MYSQL_ADDON_DB,
-  username: process.env.MYSQLUSER || process.env.DB_USER || process.env.MYSQL_ADDON_USER,
-  password: process.env.MYSQLPASSWORD !== undefined ? process.env.MYSQLPASSWORD :
-            (process.env.DB_PASSWORD !== undefined ? process.env.DB_PASSWORD : process.env.MYSQL_ADDON_PASSWORD),
-  host: process.env.MYSQLHOST || process.env.HOST || process.env.MYSQL_ADDON_HOST,
-  port: process.env.MYSQLPORT || process.env.MYSQL_ADDON_PORT || 3306,
-  dialect: process.env.DIALECT || "mysql",
-  dialectmodel: process.env.DIALECTMODEL || "mysql2",
-};
-const sequelize = new Sequelize(connection);
+// MYSQL_URL is provided automatically by Railway — use it if available.
+// HOST is intentionally excluded: it's a Linux system variable set to the
+// container hostname by Railway, not the database host.
+let sequelize;
+if (process.env.MYSQL_URL) {
+  sequelize = new Sequelize(process.env.MYSQL_URL, { dialect: "mysql", logging: false });
+} else {
+  const connection = {
+    database: process.env.MYSQLDATABASE || process.env.DATABASE_NAME,
+    username: process.env.MYSQLUSER || process.env.DB_USER,
+    password: process.env.MYSQLPASSWORD !== undefined ? process.env.MYSQLPASSWORD : process.env.DB_PASSWORD,
+    host: process.env.MYSQLHOST || "localhost",
+    port: parseInt(process.env.MYSQLPORT || "3306"),
+    dialect: "mysql",
+  };
+  sequelize = new Sequelize(connection);
+}
 const db = {};
 db.sequelize = sequelize;
 fs.readdirSync(__dirname)
