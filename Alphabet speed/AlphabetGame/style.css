@@ -173,31 +173,26 @@ input#player-name {
 
 .panel-keyboard {
   display: grid;
-  gap: 16px;
-}
-
-.keyboard {
-  display: grid;
-  grid-template-columns: repeat(8, minmax(0, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(13, minmax(0, 1fr));
+  gap: 8px;
 }
 
 .letter {
-  height: 58px;
+  height: 44px;
   border: none;
-  border-radius: 18px;
-  background: #1f3f71;
-  color: white;
-  font-size: 1.1rem;
+  border-radius: 10px;
+  background: #dde6f5;
+  color: #5a6a90;
+  font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
-  transition: transform 0.18s ease, background-color 0.18s ease;
+  transition: transform 0.15s ease, background-color 0.15s ease;
 }
 
 .letter:hover,
 .letter:focus-visible {
   transform: translateY(-1px);
-  background: #2f5aa4;
+  background: #c8d6ef;
 }
 
 .letter:active {
@@ -211,10 +206,12 @@ input#player-name {
 
 .letter.correct {
   background: #2fae6a;
+  color: white;
 }
 
 .letter.incorrect {
   background: #d53f4a;
+  color: white;
 }
 
 .sidebar {
@@ -298,8 +295,8 @@ input#player-name {
 }
 
 @media (max-width: 680px) {
-  .keyboard {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+  .panel-keyboard {
+    grid-template-columns: repeat(9, minmax(0, 1fr));
   }
 
   .action-row {
