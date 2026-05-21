@@ -1,36 +1,52 @@
-document
-  .getElementById("login-form")
-  .addEventListener("submit", async function (event) {
-    event.preventDefault();
+function showError(msg) {
+  const el = document.getElementById("error-msg");
+  el.textContent = msg;
+  el.hidden = false;
+}
 
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+function clearError() {
+  const el = document.getElementById("error-msg");
+  el.hidden = true;
+  el.textContent = "";
+}
 
-    const payload = {
-      email: email,
-      password: password,
-    };
+function quickLogin(email, password) {
+  document.getElementById("email").value = email;
+  document.getElementById("password").value = password;
+  clearError();
+  document.getElementById("login-form").requestSubmit();
+}
 
-    try {
-      const response = await fetch("/admin/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+document.getElementById("login-form").addEventListener("submit", async function (e) {
+  e.preventDefault();
+  clearError();
 
-      const data = await response.json();
+  const btn = this.querySelector(".submit-btn");
+  btn.disabled = true;
+  btn.textContent = "Signing in…";
 
-      if (response.ok) {
-        // Redirect to the admin products page or admin home
-        window.location.href = "/admin";
-      } else {
-        // Handle login failure
-        alert("Login failed: " + data.message);
-      }
-    } catch (error) {
-      console.error("Error during login:", error);
-      alert("Login failed due to a network error.");
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  try {
+    const response = await fetch("/admin/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      window.location.href = "/admin";
+    } else {
+      showError(data.message || "Incorrect email or password.");
+      btn.disabled = false;
+      btn.textContent = "Sign in";
     }
-  });
+  } catch (err) {
+    showError("Network error — please try again.");
+    btn.disabled = false;
+    btn.textContent = "Sign in";
+  }
+});
