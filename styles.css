@@ -367,8 +367,11 @@ h1 {
   border: 1px solid rgba(38, 77, 150, 0.14);
   box-shadow: 0 20px 60px rgba(33, 65, 123, 0.18);
   overflow: hidden;
-  display: flex;
   flex-direction: column;
+}
+
+#chat-panel:not([hidden]) {
+  display: flex;
 }
 
 .chat-header {
