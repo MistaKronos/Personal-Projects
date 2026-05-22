@@ -77,6 +77,14 @@
   </div>
 </div>
 
+<div class="ai-callout">
+  <span class="ai-callout-icon">✨</span>
+  <div>
+    <strong>Try the AI description generator!</strong>
+    Open any product (or add a new one), enter a name, and hit <em>Generate with AI</em> — Claude writes a product description in seconds.
+  </div>
+</div>
+
 {#if form?.error}
   <p class="form-error" style="margin-bottom:1rem">{form.error}</p>
 {/if}
@@ -161,7 +169,7 @@
       <form
         method="POST"
         action={editing ? '?/update' : '?/create'}
-        use:enhance={() => { return ({ result }) => { if (result.type !== 'failure') closeModal() } }}
+        use:enhance={() => { return async ({ result, update }) => { await update(); if (result.type !== 'failure') closeModal() } }}
       >
         {#if editing}<input type="hidden" name="id" value={editing.id} />{/if}
 
@@ -264,6 +272,21 @@
   .modal-actions { display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 0.5rem; }
 
   @media (max-width: 500px) { .form-grid { grid-template-columns: 1fr; } }
+
+  .ai-callout {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    background: linear-gradient(135deg, #0d1b3e 0%, #1a2f5f 100%);
+    border: 1px solid rgba(123,164,255,0.25);
+    border-radius: var(--radius-lg);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
+    color: rgba(255,255,255,0.85);
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+  .ai-callout strong { color: #fff; }
+  .ai-callout em { color: #a8c3ff; font-style: normal; font-weight: 600; }
+  .ai-callout-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.05rem; }
 
   .desc-label-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem; }
   .ai-btn {
