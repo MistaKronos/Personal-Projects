@@ -107,12 +107,13 @@ router.post('/', async (req, res) => {
     const status = err?.response?.status;
     const detail = err?.response?.data?.error?.message;
     console.error('Anthropic API error:', status, detail || err?.response?.data || err.message);
+    const busy = status === 429 || status === 529;
     const msg = status === 401 ? 'Invalid API key.'
-               : status === 429 || status === 529 ? 'AI is busy — please try again in a moment.'
+               : busy ? 'AI is busy right now.'
                : detail ? `Error ${status}: ${detail}`
                : status ? `Error ${status}: unexpected response`
                : `Network error: ${err.message}`;
-    res.status(500).json({ error: msg });
+    res.status(500).json({ error: msg, busy });
   }
 });
 

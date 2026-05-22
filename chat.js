@@ -49,18 +49,31 @@ form.addEventListener('submit', async (e) => {
 
   const thinking = addMessage('...', 'ai');
 
+  const maxRetries = 3;
+  let data = null;
+
   try {
-    const res = await fetch('/api/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages: history }),
-    });
-    const data = await res.json();
+    for (let attempt = 0; attempt <= maxRetries; attempt++) {
+      if (attempt > 0) {
+        thinking.textContent = `Claude is experiencing high traffic — retrying (${attempt}/${maxRetries})…`;
+        await new Promise(r => setTimeout(r, attempt * 2000));
+      }
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history }),
+      });
+      data = await res.json();
+      if (!data.busy || attempt === maxRetries) break;
+    }
+
     if (data.reply) {
       thinking.textContent = data.reply;
       history.push({ role: 'assistant', content: data.reply });
     } else {
-      thinking.textContent = data.error || 'Something went wrong.';
+      thinking.textContent = data.busy
+        ? 'Claude is too busy right now — please try again in a moment.'
+        : (data.error || 'Something went wrong.');
       history.pop();
     }
   } catch {
