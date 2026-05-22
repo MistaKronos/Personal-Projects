@@ -113,9 +113,10 @@ function resetGame() {
 }
 
 function finishGame() {
-  stopTimer();
-  finished = true;
   const elapsed = Date.now() - startTime;
+  stopTimer();
+  setTimer(elapsed);
+  finished = true;
   const playerName = playerNameInput.value.trim() || 'Guest';
   saveLeaderboard({ name: playerName, time: elapsed, createdAt: new Date().toISOString() });
   renderLeaderboard();
