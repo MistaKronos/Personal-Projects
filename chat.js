@@ -25,6 +25,16 @@ function addMessage(text, role) {
   return div;
 }
 
+document.querySelectorAll('.ai-chat-trigger').forEach(btn => {
+  btn.addEventListener('click', () => {
+    panel.hidden = false;
+    iconOpen.hidden = true;
+    iconClose.hidden = false;
+    panel.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    setTimeout(() => input.focus(), 300);
+  });
+});
+
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const text = input.value.trim();

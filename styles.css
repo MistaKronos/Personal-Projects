@@ -270,6 +270,53 @@ h1 {
   }
 }
 
+/* AI section */
+.ai-section {
+  background: linear-gradient(135deg, #0d1b3e 0%, #162654 60%, #1a2f5f 100%);
+  border-radius: 24px;
+  padding: 40px 32px;
+  border: 1px solid rgba(99, 140, 255, 0.15);
+  box-shadow: 0 24px 60px rgba(13, 27, 62, 0.3);
+}
+
+.ai-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7ba4ff;
+  margin: 0 0 10px;
+}
+
+.ai-title { color: #ffffff !important; }
+
+.ai-subtitle { color: rgba(255,255,255,0.65) !important; }
+
+.ai-card {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: none !important;
+}
+
+.ai-card:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  transform: translateY(-2px);
+}
+
+.ai-card h3 { color: #ffffff !important; }
+
+.ai-card p { color: rgba(255, 255, 255, 0.72) !important; }
+
+.ai-card .tech-tags code {
+  background: rgba(123, 164, 255, 0.15) !important;
+  color: #a8c3ff !important;
+}
+
+.badge--ai {
+  background: rgba(123, 164, 255, 0.2);
+  color: #a8c3ff;
+}
+
 /* Infrastructure badges */
 .badge--infra {
   background: rgba(22, 110, 80, 0.12);

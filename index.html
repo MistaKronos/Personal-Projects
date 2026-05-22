@@ -27,6 +27,7 @@
     <nav class="site-menu" aria-label="Portfolio navigation">
       <a href="#classic">Where I Started</a>
       <a href="#modern">Where I Am Now</a>
+      <a href="#ai">AI</a>
       <a href="#testing">Testing & QA</a>
       <a href="#games">Fun Stuff</a>
       <a href="#hosting">Hosting</a>
@@ -78,6 +79,39 @@
           <p class="tech-tags"><code>SvelteKit</code> <code>TypeScript</code> <code>Prisma</code> <code>Zod</code></p>
           <p class="notice">Hosted on Render's free tier — may take 30–60 seconds to wake from dormant on first load.</p>
           <a class="button" href="https://exam-project-modern.onrender.com" target="_blank" rel="noopener noreferrer">View Live</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- AI INTEGRATION -->
+    <section id="ai" class="portfolio-section ai-section">
+      <div class="ai-section-header">
+        <div>
+          <p class="ai-eyebrow">✦ AI Integration</p>
+          <h2 class="section-title ai-title">I build with AI, not just about it</h2>
+          <p class="section-subtitle ai-subtitle">Three working examples — all live, all built by me.</p>
+        </div>
+      </div>
+      <div class="cards-grid cards-grid--3">
+        <article class="card ai-card">
+          <span class="badge badge--ai">Workflow</span>
+          <h3>Built with Claude Code</h3>
+          <p>The modern stack rebuilds were developed using Claude Code — Anthropic's AI CLI tool. I wrote the requirements, directed the architecture, reviewed every output, and shipped. This is my actual development workflow, not a side experiment.</p>
+          <p class="tech-tags"><code>Claude Code</code> <code>Anthropic</code> <code>Prompt engineering</code></p>
+        </article>
+        <article class="card ai-card">
+          <span class="badge badge--ai">Live</span>
+          <h3>AI Portfolio Assistant</h3>
+          <p>The chat widget on this page is a live Claude API integration. A custom system prompt gives it full context about my projects, stack, experience, and approach. Ask it anything — it's running right now.</p>
+          <p class="tech-tags"><code>Claude API</code> <code>Node.js</code> <code>Prompt design</code></p>
+          <button class="button ai-chat-trigger" type="button">Try it now ↓</button>
+        </article>
+        <article class="card ai-card">
+          <span class="badge badge--ai">Live</span>
+          <h3>AI Description Generator</h3>
+          <p>The modern exam project's product form has a ✨ Generate with AI button. Type a name, pick a category — Claude Haiku writes a product description in under a second, server-side via the Anthropic API.</p>
+          <p class="tech-tags"><code>Claude Haiku</code> <code>SvelteKit</code> <code>REST endpoint</code></p>
+          <a class="button" href="https://exam-project-modern.onrender.com" target="_blank" rel="noopener noreferrer">See it live</a>
         </article>
       </div>
     </section>
