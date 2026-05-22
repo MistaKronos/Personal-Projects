@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const AnthropicSdk = require('@anthropic-ai/sdk');
-const Anthropic = AnthropicSdk.default ?? AnthropicSdk;
+const axios = require('axios');
 
 const SYSTEM_PROMPT = `You are a portfolio assistant for Sindre Steen Andersen, a Software Engineer and QA Specialist based in Norway. Answer questions about Sindre in a helpful, conversational tone. Be honest, confident, and concise. Speak about Sindre in the third person unless the visitor asks a direct question where first-person makes more sense.
 
@@ -73,18 +72,28 @@ router.post('/', async (req, res) => {
   }
 
   try {
-    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-    const response = await client.messages.create({
-      model: 'claude-haiku-4-5-20251001',
-      max_tokens: 300,
-      system: SYSTEM_PROMPT,
-      messages: messages.slice(-6),
-    });
-    res.json({ reply: response.content[0].text });
+    const response = await axios.post(
+      'https://api.anthropic.com/v1/messages',
+      {
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 300,
+        system: SYSTEM_PROMPT,
+        messages: messages.slice(-6),
+      },
+      {
+        headers: {
+          'x-api-key': process.env.ANTHROPIC_API_KEY,
+          'anthropic-version': '2023-06-01',
+          'content-type': 'application/json',
+        },
+      }
+    );
+    res.json({ reply: response.data.content[0].text });
   } catch (err) {
-    console.error('Claude API error:', err?.status, err?.message, err?.error);
-    const msg = err?.status === 401 ? 'Invalid API key.'
-               : err?.status === 429 ? 'Rate limited. Try again shortly.'
+    const status = err?.response?.status;
+    console.error('Anthropic API error:', status, err?.response?.data);
+    const msg = status === 401 ? 'Invalid API key.'
+               : status === 429 ? 'Rate limited. Try again shortly.'
                : 'Something went wrong. Try again.';
     res.status(500).json({ error: msg });
   }
