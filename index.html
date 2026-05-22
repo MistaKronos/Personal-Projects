@@ -29,6 +29,7 @@
       <a href="#modern">Where I Am Now</a>
       <a href="#testing">Testing & QA</a>
       <a href="#games">Fun Stuff</a>
+      <a href="#hosting">Hosting</a>
     </nav>
 
     <!-- CLASSIC PROJECTS -->
@@ -123,9 +124,64 @@
       </div>
     </section>
 
+    <!-- HOSTING & INFRASTRUCTURE -->
+    <section id="hosting" class="portfolio-section">
+      <h2 class="section-title">Hosting & Infrastructure</h2>
+      <p class="section-subtitle">Built and deployed to cut costs — total monthly hosting bill: $0</p>
+      <div class="cards-grid cards-grid--3">
+        <article class="card">
+          <span class="badge badge--infra">Railway</span>
+          <h3>Portfolio + Classic Exam</h3>
+          <p>The main portfolio and classic exam project run on a single Railway Node.js service. A separate Railway MySQL addon provides the database. Both on the free tier.</p>
+          <p class="tech-tags"><code>Node.js</code> <code>Express</code> <code>MySQL</code></p>
+        </article>
+        <article class="card">
+          <span class="badge badge--infra">Render</span>
+          <h3>Modern Exam Project</h3>
+          <p>The SvelteKit rebuild runs on Render's free tier. SQLite is seeded fresh on each deploy — no persistent database needed for a portfolio demo, so no paid DB addon required.</p>
+          <p class="tech-tags"><code>SvelteKit</code> <code>SQLite</code> <code>Prisma</code></p>
+        </article>
+        <article class="card">
+          <span class="badge badge--infra">Architecture</span>
+          <h3>Why Two Platforms</h3>
+          <p>Railway's free plan allows 2 services — already used by the Express app and MySQL. Rather than pay for a third, the modern project was moved to Render's separate free tier. Zero extra cost.</p>
+          <p class="tech-tags"><code>Cost optimisation</code> <code>Free tier</code></p>
+        </article>
+      </div>
+    </section>
+
     <footer class="footer">
       <p>Sindre Steen Andersen &mdash; Software Engineer &amp; QA Specialist &mdash; 2024&ndash;2026</p>
     </footer>
   </main>
+
+  <!-- AI CHAT WIDGET -->
+  <div id="chat-widget">
+    <button id="chat-toggle" aria-label="Chat with my portfolio">
+      <svg id="chat-icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <svg id="chat-icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" hidden><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div id="chat-panel" hidden>
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <span class="chat-avatar">S</span>
+          <div>
+            <strong>Ask about Sindre</strong>
+            <span class="chat-powered">Powered by Claude AI</span>
+          </div>
+        </div>
+      </div>
+      <div id="chat-messages">
+        <div class="chat-msg chat-msg--ai">Hey! Ask me anything about Sindre's experience, projects, or tech stack.</div>
+      </div>
+      <form id="chat-form">
+        <input id="chat-input" type="text" placeholder="e.g. What stack does he use?" autocomplete="off" maxlength="300" />
+        <button type="submit">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+  <script src="chat.js"></script>
 </body>
 </html>

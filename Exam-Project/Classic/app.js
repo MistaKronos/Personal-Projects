@@ -16,6 +16,7 @@ var categoriesRouter = require("./routes/categories");
 var ordersRouter = require("./routes/orders");
 var productsRouter = require("./routes/products");
 var adminHomeRouter = require("./routes/adminHome");
+var chatRouter = require("./routes/chat");
 
 var db = require("./models");
 db.sequelize.sync({ force: false });
@@ -42,6 +43,7 @@ app.use("/categories", categoriesRouter);
 app.use("/orders", ordersRouter);
 app.use("/products", productsRouter);
 app.use("/admin", adminHomeRouter);
+app.use("/api/chat", chatRouter);
 
 app.use(bodyParser.json());
 
