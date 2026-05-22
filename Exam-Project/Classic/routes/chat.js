@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Anthropic = require('@anthropic-ai/sdk');
+const AnthropicSdk = require('@anthropic-ai/sdk');
+const Anthropic = AnthropicSdk.default ?? AnthropicSdk;
 
 const SYSTEM_PROMPT = `You are a portfolio assistant for Sindre Steen Andersen, a Software Engineer and QA Specialist based in Norway. Answer questions about Sindre in a helpful, conversational tone. Be honest, confident, and concise. Speak about Sindre in the third person unless the visitor asks a direct question where first-person makes more sense.
 
@@ -81,8 +82,11 @@ router.post('/', async (req, res) => {
     });
     res.json({ reply: response.content[0].text });
   } catch (err) {
-    console.error('Claude API error:', err.message);
-    res.status(500).json({ error: 'Something went wrong. Try again.' });
+    console.error('Claude API error:', err?.status, err?.message, err?.error);
+    const msg = err?.status === 401 ? 'Invalid API key.'
+               : err?.status === 429 ? 'Rate limited. Try again shortly.'
+               : 'Something went wrong. Try again.';
+    res.status(500).json({ error: msg });
   }
 });
 
