@@ -71,6 +71,15 @@ router.post('/', async (req, res) => {
     return res.status(503).json({ error: 'AI chat is not configured yet.' });
   }
 
+  const sanitized = messages
+    .slice(-6)
+    .filter(m => m && typeof m.role === 'string' && typeof m.content === 'string' && m.content.trim())
+    .map(m => ({ role: m.role, content: m.content.trim() }));
+
+  if (sanitized.length === 0 || sanitized[sanitized.length - 1].role !== 'user') {
+    return res.status(400).json({ error: 'Invalid message history.' });
+  }
+
   try {
     const response = await axios.post(
       'https://api.anthropic.com/v1/messages',
@@ -78,7 +87,7 @@ router.post('/', async (req, res) => {
         model: 'claude-haiku-4-5-20251001',
         max_tokens: 300,
         system: SYSTEM_PROMPT,
-        messages: messages.slice(-6),
+        messages: sanitized,
       },
       {
         headers: {
@@ -88,12 +97,19 @@ router.post('/', async (req, res) => {
         },
       }
     );
-    res.json({ reply: response.data.content[0].text });
+    const text = response.data?.content?.find(c => c.type === 'text')?.text;
+    if (!text) {
+      console.error('Anthropic returned no text block:', JSON.stringify(response.data));
+      return res.status(500).json({ error: 'Empty response from AI.' });
+    }
+    res.json({ reply: text });
   } catch (err) {
     const status = err?.response?.status;
-    console.error('Anthropic API error:', status, err?.response?.data);
+    const detail = err?.response?.data?.error?.message;
+    console.error('Anthropic API error:', status, detail || err?.response?.data || err.message);
     const msg = status === 401 ? 'Invalid API key.'
                : status === 429 ? 'Rate limited. Try again shortly.'
+               : status === 400 ? `Bad request: ${detail || 'check message format'}`
                : 'Something went wrong. Try again.';
     res.status(500).json({ error: msg });
   }
