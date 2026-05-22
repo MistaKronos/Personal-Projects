@@ -56,11 +56,16 @@ form.addEventListener('submit', async (e) => {
       body: JSON.stringify({ messages: history }),
     });
     const data = await res.json();
-    const reply = data.reply || data.error || 'Something went wrong.';
-    thinking.textContent = reply;
-    if (data.reply) history.push({ role: 'assistant', content: reply });
+    if (data.reply) {
+      thinking.textContent = data.reply;
+      history.push({ role: 'assistant', content: data.reply });
+    } else {
+      thinking.textContent = data.error || 'Something went wrong.';
+      history.pop();
+    }
   } catch {
     thinking.textContent = 'Network error — please try again.';
+    history.pop();
   }
 
   input.disabled = false;
