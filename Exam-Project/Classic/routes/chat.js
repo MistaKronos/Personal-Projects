@@ -108,7 +108,7 @@ router.post('/', async (req, res) => {
     const detail = err?.response?.data?.error?.message;
     console.error('Anthropic API error:', status, detail || err?.response?.data || err.message);
     const msg = status === 401 ? 'Invalid API key.'
-               : status === 429 ? 'Rate limited. Try again shortly.'
+               : status === 429 || status === 529 ? 'AI is busy — please try again in a moment.'
                : detail ? `Error ${status}: ${detail}`
                : status ? `Error ${status}: unexpected response`
                : `Network error: ${err.message}`;
