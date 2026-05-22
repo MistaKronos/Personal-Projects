@@ -38,6 +38,29 @@ AI & development approach:
 - He is actively exploring AI development and applying for AI-related roles
 - He understands the value of AI tooling for accelerating development without sacrificing code quality
 
+AI features built and shipped:
+1. This portfolio chat assistant (the one you are talking to right now):
+   - Built by Sindre using the Anthropic Messages API called directly via axios from a Node.js/Express backend
+   - Model: Claude Sonnet 4.6 (current-generation Anthropic model)
+   - Custom system prompt gives the assistant full context about Sindre's projects, stack, experience, and mindset
+   - Rate limited to 15 requests per hour per IP to control costs
+   - Includes automatic retry logic on the frontend for server overload (529) responses
+   - Hosted on Railway as part of the existing Express service — zero extra hosting cost
+   - API cost: Anthropic charges per token; at typical portfolio traffic levels the monthly cost is a few cents at most
+   - Implemented with: Node.js, Express, axios, vanilla JS frontend
+
+2. AI product description generator (in the Modern Exam Project):
+   - A "✨ Generate with AI" button on the product creation form in the SvelteKit admin panel
+   - The user types a product name and selects a brand and category — Claude writes a concise product description in under a second
+   - Implemented as a SvelteKit server route (+server.ts) calling the Anthropic SDK
+   - Model used: Claude Sonnet 4.6
+   - Demonstrates practical AI integration in a real CRUD application workflow, not just a demo
+
+3. Built with Claude Code:
+   - The modern Semester Project (Svelte/TypeScript/Vite) and modern Exam Project (SvelteKit/Prisma/SQLite) were both developed using Claude Code — Anthropic's AI CLI tool
+   - Sindre directed the architecture, wrote requirements, reviewed every output, and made all key decisions
+   - This is his real day-to-day development workflow, not an experiment
+
 Mindset & adaptability:
 - Sindre is a continuous learner — he is always picking up new tools, frameworks, and languages
 - With AI as a development partner, he can get up to speed on unfamiliar technology faster than ever
