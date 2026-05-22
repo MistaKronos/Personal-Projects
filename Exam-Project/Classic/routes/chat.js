@@ -84,7 +84,7 @@ router.post('/', async (req, res) => {
     const response = await axios.post(
       'https://api.anthropic.com/v1/messages',
       {
-        model: 'claude-3-5-haiku-20241022',
+        model: 'claude-sonnet-4-6',
         max_tokens: 300,
         system: SYSTEM_PROMPT,
         messages: sanitized,
