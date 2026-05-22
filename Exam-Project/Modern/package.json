@@ -20,7 +20,8 @@
     "@sveltejs/kit": "^2.5.18",
     "jose": "^5.6.3",
     "svelte": "^4.2.18",
-    "zod": "^3.23.8"
+    "zod": "^3.23.8",
+    "@anthropic-ai/sdk": "^0.30.0"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^3.1.0",

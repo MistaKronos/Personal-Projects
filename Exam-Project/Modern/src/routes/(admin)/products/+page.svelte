@@ -10,9 +10,53 @@
   let editing: Product | null = null
   let showDeleted = false
 
-  function openCreate() { editing = null; showModal = true }
-  function openEdit(p: Product) { editing = p; showModal = true }
-  function closeModal() { showModal = false; editing = null }
+  let nameValue = ''
+  let descValue = ''
+  let brandIdValue: number = data.brands[0]?.id ?? 0
+  let categoryIdValue: number = data.categories[0]?.id ?? 0
+  let generating = false
+  let genError = ''
+
+  function openCreate() {
+    editing = null
+    nameValue = ''
+    descValue = ''
+    brandIdValue = data.brands[0]?.id ?? 0
+    categoryIdValue = data.categories[0]?.id ?? 0
+    showModal = true
+  }
+
+  function openEdit(p: Product) {
+    editing = p
+    nameValue = p.name
+    descValue = p.description
+    brandIdValue = p.brandId
+    categoryIdValue = p.categoryId
+    showModal = true
+  }
+
+  function closeModal() { showModal = false; editing = null; genError = '' }
+
+  async function generateDescription() {
+    if (!nameValue.trim()) { genError = 'Enter a product name first.'; return }
+    genError = ''
+    generating = true
+    const brand = data.brands.find(b => b.id === Number(brandIdValue))?.name ?? ''
+    const category = data.categories.find(c => c.id === Number(categoryIdValue))?.name ?? ''
+    try {
+      const res = await fetch('/api/generate-description', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: nameValue, brand, category })
+      })
+      const json = await res.json()
+      if (json.description) descValue = json.description
+      else genError = json.error ?? 'Something went wrong.'
+    } catch {
+      genError = 'Network error. Try again.'
+    }
+    generating = false
+  }
 
   $: visible = showDeleted ? data.products : data.products.filter(p => !p.isDeleted)
 </script>
@@ -124,7 +168,7 @@
         <div class="form-grid">
           <label class="form-field">
             <span class="form-label">Name *</span>
-            <input class="form-input" name="name" required value={editing?.name ?? ''} />
+            <input class="form-input" name="name" required bind:value={nameValue} />
           </label>
           <label class="form-field">
             <span class="form-label">Price *</span>
@@ -140,24 +184,34 @@
           </label>
           <label class="form-field">
             <span class="form-label">Brand *</span>
-            <select class="form-input" name="brandId" required>
+            <select class="form-input" name="brandId" required bind:value={brandIdValue}>
               {#each data.brands as b}
-                <option value={b.id} selected={editing?.brandId === b.id}>{b.name}</option>
+                <option value={b.id}>{b.name}</option>
               {/each}
             </select>
           </label>
           <label class="form-field">
             <span class="form-label">Category *</span>
-            <select class="form-input" name="categoryId" required>
+            <select class="form-input" name="categoryId" required bind:value={categoryIdValue}>
               {#each data.categories as c}
-                <option value={c.id} selected={editing?.categoryId === c.id}>{c.name}</option>
+                <option value={c.id}>{c.name}</option>
               {/each}
             </select>
           </label>
-          <label class="form-field" style="grid-column:1/-1">
-            <span class="form-label">Description *</span>
-            <textarea class="form-input" name="description" rows="3" required>{editing?.description ?? ''}</textarea>
-          </label>
+          <div class="form-field" style="grid-column:1/-1">
+            <div class="desc-label-row">
+              <span class="form-label">Description *</span>
+              <button type="button" class="ai-btn" on:click={generateDescription} disabled={generating}>
+                {#if generating}
+                  <span class="ai-spinner"></span> Generating…
+                {:else}
+                  ✨ Generate with AI
+                {/if}
+              </button>
+            </div>
+            {#if genError}<p class="gen-error">{genError}</p>{/if}
+            <textarea class="form-input" name="description" rows="3" required bind:value={descValue}></textarea>
+          </div>
         </div>
 
         <div class="modal-actions">
@@ -210,4 +264,23 @@
   .modal-actions { display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 0.5rem; }
 
   @media (max-width: 500px) { .form-grid { grid-template-columns: 1fr; } }
+
+  .desc-label-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem; }
+  .ai-btn {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.3rem 0.75rem; border-radius: var(--radius-sm);
+    border: 1px solid var(--accent); background: transparent;
+    color: var(--accent); font-size: 0.78rem; font-weight: 600;
+    cursor: pointer; transition: background 0.15s ease, color 0.15s ease;
+    white-space: nowrap;
+  }
+  .ai-btn:hover:not(:disabled) { background: var(--accent); color: #fff; }
+  .ai-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+  .ai-spinner {
+    width: 10px; height: 10px; border-radius: 50%;
+    border: 2px solid currentColor; border-top-color: transparent;
+    animation: spin 0.6s linear infinite; display: inline-block;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .gen-error { margin: 0 0 0.4rem; font-size: 0.78rem; color: var(--danger); }
 </style>
