@@ -291,6 +291,7 @@ h1 {
 .ai-title { color: #ffffff !important; }
 
 .ai-subtitle { color: rgba(255,255,255,0.65) !important; }
+.ai-subtitle em { color: rgba(255,255,255,0.95); font-style: italic; }
 
 .ai-card {
   background: rgba(255, 255, 255, 0.06) !important;
