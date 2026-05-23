@@ -1,7 +1,14 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
   import { page } from '$app/stores'
   import type { LayoutData } from './$types'
   export let data: LayoutData
+
+  onMount(() => {
+    const handler = (e: PageTransitionEvent) => { if (e.persisted) window.location.reload() }
+    window.addEventListener('pageshow', handler)
+    return () => window.removeEventListener('pageshow', handler)
+  })
 
   const nav = [
     { href: '/products',   label: 'Products',   icon: '🛍' },
