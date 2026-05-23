@@ -7,6 +7,8 @@
   type Category = PageData['categories'][number]
   let showModal = false
   let editing: Category | null = null
+  let linkedInfoCategory: Category | null = null
+
   function openCreate() { editing = null; showModal = true }
   function openEdit(c: Category) { editing = c; showModal = true }
   function closeModal() { showModal = false; editing = null }
@@ -38,11 +40,15 @@
           <td>
             <div class="row-actions">
               <button class="btn btn-ghost btn-sm" on:click={() => openEdit(c)}>Edit</button>
-              <form method="POST" action="?/delete" use:enhance style="display:inline"
-                on:submit={e => { if (!confirm('Delete category?')) e.preventDefault() }}>
-                <input type="hidden" name="id" value={c.id} />
-                <button type="submit" class="btn btn-danger btn-sm" disabled={c._count.products > 0}>Delete</button>
-              </form>
+              {#if c.products.length > 0}
+                <button class="btn btn-danger btn-sm" on:click={() => linkedInfoCategory = c}>Delete</button>
+              {:else}
+                <form method="POST" action="?/delete" use:enhance style="display:inline"
+                  on:submit={e => { if (!confirm('Delete category?')) e.preventDefault() }}>
+                  <input type="hidden" name="id" value={c.id} />
+                  <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+              {/if}
             </div>
           </td>
         </tr>
@@ -62,7 +68,7 @@
         <button class="modal-close" on:click={closeModal}>✕</button>
       </div>
       <form method="POST" action={editing ? '?/update' : '?/create'}
-        use:enhance={() => { return ({ result }) => { if (result.type !== 'failure') closeModal() } }}>
+        use:enhance={() => { return async ({ result, update }) => { if (result.type !== 'failure') closeModal(); await update() } }}>
         {#if editing}<input type="hidden" name="id" value={editing.id} />{/if}
         <label class="form-field">
           <span class="form-label">Category Name *</span>
@@ -73,6 +79,31 @@
           <button type="submit" class="btn btn-primary">{editing ? 'Save' : 'Create'}</button>
         </div>
       </form>
+    </div>
+  </div>
+{/if}
+
+{#if linkedInfoCategory}
+  <div class="overlay" on:click={() => linkedInfoCategory = null} role="presentation">
+    <div class="modal" on:click|stopPropagation on:keydown={() => {}} role="dialog" aria-modal="true">
+      <div class="modal-header">
+        <h2>Cannot Delete Category</h2>
+        <button class="modal-close" on:click={() => linkedInfoCategory = null}>✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="linked-desc">
+          <strong>"{linkedInfoCategory.name}"</strong> is linked to {linkedInfoCategory.products.length} product{linkedInfoCategory.products.length === 1 ? '' : 's'}:
+        </p>
+        <ul class="linked-list">
+          {#each linkedInfoCategory.products as p}
+            <li>{p.name}</li>
+          {/each}
+        </ul>
+        <p class="linked-hint">To delete this category, first reassign or delete its products.</p>
+        <div class="modal-actions">
+          <button class="btn btn-primary" on:click={() => linkedInfoCategory = null}>Got it</button>
+        </div>
+      </div>
     </div>
   </div>
 {/if}
@@ -93,11 +124,15 @@
   .row-actions { display:flex; gap:0.4rem; }
   .empty-cell { text-align:center; color:var(--text-dim); padding:2rem; }
   .overlay { position:fixed; inset:0; background:rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; z-index:200; backdrop-filter:blur(2px); padding:1rem; }
-  .modal { background:var(--surface-raised); border:1px solid var(--border); border-radius:var(--radius-lg); width:100%; max-width:380px; box-shadow:var(--shadow); }
+  .modal { background:var(--surface-raised); border:1px solid var(--border); border-radius:var(--radius-lg); width:100%; max-width:420px; box-shadow:var(--shadow); }
   .modal-header { display:flex; align-items:center; justify-content:space-between; padding:1.25rem 1.5rem; border-bottom:1px solid var(--border-subtle); }
   .modal-header h2 { font-size:1rem; font-weight:600; }
   .modal-close { background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1rem; padding:0.25rem; line-height:1; border-radius:2px; }
   .modal-close:hover { color:var(--text); }
   form { padding:1.5rem; display:flex; flex-direction:column; gap:1rem; }
+  .modal-body { padding:1.5rem; display:flex; flex-direction:column; gap:1rem; }
   .modal-actions { display:flex; justify-content:flex-end; gap:0.5rem; }
+  .linked-desc { font-size:0.9rem; }
+  .linked-list { margin:0; padding-left:1.25rem; font-size:0.875rem; color:var(--text-muted); display:flex; flex-direction:column; gap:0.2rem; }
+  .linked-hint { font-size:0.8125rem; color:var(--text-dim); }
 </style>

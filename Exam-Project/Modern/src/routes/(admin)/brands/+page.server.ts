@@ -5,7 +5,7 @@ import type { Actions, PageServerLoad } from './$types'
 
 export const load: PageServerLoad = async () => {
   const brands = await prisma.brand.findMany({
-    include: { _count: { select: { products: true } } },
+    include: { products: { select: { id: true, name: true } }, _count: { select: { products: true } } },
     orderBy: { name: 'asc' },
   })
   return { brands }
