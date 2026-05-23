@@ -15,6 +15,8 @@
 
 <svelte:head><title>Login — WDT Admin</title></svelte:head>
 
+<a href="https://mistakronos.github.io/Personal-Projects/" class="portfolio-back">&#8592; Portfolio</a>
+
 <div class="shell">
   <div class="card">
     <div class="brand">
@@ -103,4 +105,24 @@
     margin-top: 1rem;
     justify-content: center;
   }
+
+  .portfolio-back {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.35rem 0.75rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    transition: color 150ms;
+    z-index: 10;
+  }
+  .portfolio-back:hover { color: var(--text); }
 </style>

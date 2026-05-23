@@ -6,11 +6,14 @@
 
 <div class="shell">
   <header class="topbar">
-    <div class="brand">
-      <div class="brand-logo">WDT</div>
-      <div class="brand-text">
-        <span class="brand-name">WeDeliverTech</span>
-        <span class="brand-sub">Reception Dashboard</span>
+    <div class="topbar-left">
+      <a href="../../../index.html" class="back-link">&#8592; Portfolio</a>
+      <div class="brand">
+        <div class="brand-logo">WDT</div>
+        <div class="brand-text">
+          <span class="brand-name">WeDeliverTech</span>
+          <span class="brand-sub">Reception Dashboard</span>
+        </div>
       </div>
     </div>
     <Clock />
@@ -46,6 +49,25 @@
     z-index: 100;
     gap: 1rem;
   }
+
+  .topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .back-link {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: color 150ms;
+    white-space: nowrap;
+  }
+  .back-link:hover { color: var(--text); }
 
   .brand {
     display: flex;

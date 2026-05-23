@@ -50,6 +50,7 @@
           <div class="user-role">{data.user.role}</div>
         </div>
       </div>
+      <a href="https://mistakronos.github.io/Personal-Projects/" class="btn btn-ghost btn-sm signout-link" style="opacity:0.7">&#8592; Portfolio</a>
       <a href="/logout" data-sveltekit-reload class="btn btn-ghost btn-sm signout-link">Sign out</a>
     </div>
   </aside>
