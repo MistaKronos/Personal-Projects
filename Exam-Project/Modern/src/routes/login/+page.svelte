@@ -2,6 +2,15 @@
   import { enhance } from '$app/forms'
   import type { ActionData } from './$types'
   export let form: ActionData
+
+  const DEMO_EMAIL = 'admin@noroff.no'
+  const DEMO_PASSWORD = 'P@ssword2023'
+
+  let email = ''
+  let password = ''
+
+  function fillCredentials() { email = DEMO_EMAIL; password = DEMO_PASSWORD }
+  function clearCredentials() { email = ''; password = '' }
 </script>
 
 <svelte:head><title>Login — WDT Admin</title></svelte:head>
@@ -26,12 +35,12 @@
 
       <label class="form-field">
         <span class="form-label">Email</span>
-        <input class="form-input" type="email" name="email" placeholder="admin@noroff.no" required />
+        <input class="form-input" type="email" name="email" placeholder="admin@noroff.no" required bind:value={email} />
       </label>
 
       <label class="form-field" style="margin-top:1rem">
         <span class="form-label">Password</span>
-        <input class="form-input" type="password" name="password" placeholder="••••••••" required />
+        <input class="form-input" type="password" name="password" placeholder="••••••••" required bind:value={password} />
       </label>
 
       <button class="btn btn-primary" style="width:100%;margin-top:1.5rem;justify-content:center;padding:.65em 1em">
@@ -39,7 +48,10 @@
       </button>
     </form>
 
-    <p class="demo-hint">Demo: admin@noroff.no / P@ssword2023</p>
+    <div class="cred-actions">
+      <button class="btn btn-ghost btn-sm" type="button" on:click={fillCredentials}>Add credentials</button>
+      <button class="btn btn-ghost btn-sm" type="button" on:click={clearCredentials}>Clear credentials</button>
+    </div>
   </div>
 </div>
 
@@ -85,14 +97,10 @@
   h1   { font-size: 1.375rem; font-weight: 700; letter-spacing: -0.02em; }
   .sub { font-size: 0.8125rem; color: var(--text-muted); margin-top: 0.25rem; margin-bottom: 1.5rem; }
 
-  .demo-hint {
-    margin-top: 1.25rem;
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    text-align: center;
-    padding: 0.5em;
-    background: var(--surface-raised);
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border-subtle);
+  .cred-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    justify-content: center;
   }
 </style>

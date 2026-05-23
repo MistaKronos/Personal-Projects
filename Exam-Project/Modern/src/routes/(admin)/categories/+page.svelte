@@ -129,7 +129,7 @@
   .modal-header h2 { font-size:1rem; font-weight:600; }
   .modal-close { background:none; border:none; color:var(--text-muted); cursor:pointer; font-size:1rem; padding:0.25rem; line-height:1; border-radius:2px; }
   .modal-close:hover { color:var(--text); }
-  form { padding:1.5rem; display:flex; flex-direction:column; gap:1rem; }
+  .modal form { padding:1.5rem; display:flex; flex-direction:column; gap:1rem; }
   .modal-body { padding:1.5rem; display:flex; flex-direction:column; gap:1rem; }
   .modal-actions { display:flex; justify-content:flex-end; gap:0.5rem; }
   .linked-desc { font-size:0.9rem; }
