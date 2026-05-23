@@ -1,6 +1,5 @@
 <script lang="ts">
   import { page } from '$app/stores'
-  import { enhance } from '$app/forms'
   import type { LayoutData } from './$types'
   export let data: LayoutData
 
@@ -44,7 +43,7 @@
           <div class="user-role">{data.user.role}</div>
         </div>
       </div>
-      <form method="POST" action="/logout" use:enhance>
+      <form method="POST" action="/logout">
         <button type="submit" class="btn btn-ghost btn-sm" style="width:100%;justify-content:center">
           Sign out
         </button>
