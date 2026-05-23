@@ -43,11 +43,7 @@
           <div class="user-role">{data.user.role}</div>
         </div>
       </div>
-      <form method="POST" action="/logout">
-        <button type="submit" class="btn btn-ghost btn-sm" style="width:100%;justify-content:center">
-          Sign out
-        </button>
-      </form>
+      <a href="/logout" class="btn btn-ghost btn-sm signout-link">Sign out</a>
     </div>
   </aside>
 
@@ -147,6 +143,7 @@
 
   .user-email { font-size: 0.75rem; font-weight: 500; }
   .user-role  { font-size: 0.6875rem; color: var(--text-muted); }
+  .signout-link { width:100%; justify-content:center; text-align:center; text-decoration:none; }
 
   .content {
     flex: 1;
