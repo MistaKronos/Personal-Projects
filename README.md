@@ -1,132 +1,140 @@
-# Sindre Andersen | Software Engineer & QA Specialist Portfolio
+# Sindre Andersen | Software Engineer & AI-Assisted Developer
 
-Welcome to my portfolio. This workspace showcases my full-stack development work, modern implementations, and quality assurance expertise.
+Welcome to my portfolio. This repository showcases my full-stack development work across two generations of the same projects — where I started academically, and where I am now with modern tooling and AI-assisted development.
+
+Live portfolio: **[mista-ai.up.railway.app](https://mista-ai.up.railway.app/index.html)**
+
+## 🔗 Contact & Links
+
+- **GitHub**: [github.com/MistaKronos](https://github.com/MistaKronos)
+- **LinkedIn**: [linkedin.com/in/sindre-steen-andersen-8b9ba8199](https://www.linkedin.com/in/sindre-steen-andersen-8b9ba8199/)
+- **Email**: sindresteenandersen@gmail.com
+
+---
 
 ## 📁 Structure
 
 ```
-JobbSide/
-├── index.html                          # Main portfolio homepage
-├── styles.css                          # Homepage styling
-├── README.md                           # This file
+Personal-Projects/
+├── index.html                              # Portfolio homepage (live at mista-ai.up.railway.app)
+├── styles.css                              # Homepage styling
+├── chat.js                                 # Claude API chat widget
 │
-├── Alphabet speed/AlphabetGame/        # Fun project: typing game with leaderboard
-│   ├── index.html
-│   ├── script.js                       # Includes localStorage for scores
-│   └── style.css
+├── Semester-Project/
+│   ├── Classic/WebApplication/HTML/        # Original: vanilla JS + Bootstrap dashboard
+│   └── Modern/                             # Rebuilt: Svelte + TypeScript (dist/ is live)
 │
-├── Semester-Project/                                # Classic: Semester Project (original)
-│   └── Classic/WebApplication/HTML/index.html
+├── Exam-Project/
+│   ├── Classic/                            # Original: Node.js / Express / MySQL / EJS
+│   └── Modern/                             # Rebuilt: SvelteKit / Prisma / TypeScript
 │
-├── Exam-Project/                                # Classic: Exam Project (Node.js/Express)
-│   ├── app.js
-│   ├── package.json
-│   ├── models/                         # Database models
-│   ├── routes/                         # API endpoints
-│   └── services/                       # Business logic
-│
-├── testing/                            # QA & Testing Portfolio
-│   ├── README.md                       # Testing strategy & philosophy
-│   ├── playwright/README.md            # E2E test examples
-│   └── api/README.md                   # API testing patterns
-└── modern/                             # (Planned) Modern implementations
-    ├── Semester-Project-modern/                     # React/TypeScript rebuild
-    └── Exam-Project-modern/                     # NestJS rebuild with tests
+├── Alphabet speed/AlphabetGame/            # Typing speed game with localStorage leaderboard
+└── testing/                                # QA & testing portfolio (Playwright, API testing)
 ```
+
+---
 
 ## 🎯 What This Shows
 
-### Academic Foundation
-- **Semester Project**: Pure frontend work—HTML, CSS, JavaScript fundamentals
-- **Exam Project**: Backend development—Node.js, Express, database design, API development
+### Two Versions of Every Project
+Each major project exists in two forms:
+- **Classic** — the original academic implementation, built without modern tooling or AI
+- **Modern** — a complete rebuild with a modern stack, TypeScript, and AI-assisted development
 
-### Modern Engineering
-- **Testing & QA**: Automated test examples (Playwright, Jest, API testing)
-- **Code Quality**: Best practices for maintainability and reliability
-- **Growth**: Shows evolution from classic to modern tech stacks
+This side-by-side comparison shows not just where I started, but how I work today.
 
-### Fun & Practical
-- **Alphabet Game**: Real working project with local storage, responsive design
+### AI-Assisted Development
+The modern rebuilds were developed using **Claude Code** (Anthropic's AI CLI). I directed the architecture, wrote requirements, reviewed all output, and shipped. This is my actual development workflow — AI as a collaborator, not a crutch.
 
-## 🚀 Quick Start
+The portfolio itself includes a **live Claude API integration** — a chat widget with a custom system prompt that answers questions about my work in real time.
 
-### View Portfolio
-```bash
-# Open in browser
-open index.html
-```
-
-### Run Exam Project (Node/Express)
-```bash
-cd Exam-Project
-npm install
-npm start
-# Visit http://localhost:3000
-```
-
-### Explore Testing Examples
-- See `testing/README.md` for comprehensive QA documentation
-- Browse `testing/playwright/` for E2E test patterns
-- Check `testing/api/` for API testing examples
-
-### Play Alphabet Game
-Navigate to the game from the main portfolio page or open:
-```
-Alphabet speed/AlphabetGame/index.html
-```
+---
 
 ## 💻 Tech Stack
 
 ### Classic Projects
-- JavaScript (ES6+)
-- Node.js / Express
-- HTML5, CSS3
-- RESTful APIs
+- HTML5, CSS3, JavaScript (ES6+)
+- Node.js / Express.js
+- Sequelize ORM / MySQL
+- EJS templating
+- JWT authentication
+- Bootstrap 5
+
+### Modern Projects
+- **Svelte / SvelteKit**
+- **TypeScript**
+- **Prisma ORM / SQLite**
+- **Zod** (schema validation)
+- **Vite**
+- JWT (httpOnly cookies)
+
+### AI & Tooling
+- Claude API (Anthropic) — chat integration + development workflow
+- Claude Code — AI-assisted CLI development
+- Prompt engineering / system prompt design
 
 ### Testing & QA
-- **UI Testing**: Playwright
-- **API Testing**: Jest, Supertest, REST Client
-- **Best Practices**: Test automation, regression testing, data validation
+- Playwright (E2E testing)
+- Jest + Supertest (API testing)
+- REST Client
+- Test automation, regression testing, data validation
 
-### Modern Stack (In Progress)
-- React / TypeScript
-- NestJS
-- Comprehensive test coverage
-- Modern development tools (Vite, etc.)
+---
 
-## 📊 Portfolio Strategy
+## 🚀 Running Projects Locally
 
-This portfolio is designed to demonstrate:
+### Portfolio (static)
+```bash
+# Open index.html directly in a browser, or serve it:
+npx serve .
+```
 
-1. **Solid Fundamentals**: Academic projects show core web development skills
-2. **QA Mindset**: Testing examples prove attention to quality
-3. **Growth**: Modern versions show I stay current with tech
-4. **Practical Skills**: Working projects, not just theory
-5. **Communication**: Clear documentation and code comments
+### Classic Exam Project (Node/Express + MySQL)
+```bash
+cd Exam-Project/Classic
+npm install
+npm start
+# Visit http://localhost:3000/admin/login
+```
+
+### Modern Exam Project (SvelteKit)
+```bash
+cd Exam-Project/Modern
+npm install
+npx prisma db push
+npx prisma db seed
+npm run dev
+# Visit http://localhost:5173
+```
+
+### Modern Semester Project (Svelte)
+```bash
+cd Semester-Project/Modern
+npm install
+npm run dev
+```
+
+---
 
 ## 🏆 Key Highlights
 
-✅ **Full-Stack Development**: From frontend to backend
-✅ **Quality Assurance**: Automated testing expertise  
-✅ **Best Practices**: Clean code, testing, documentation
-✅ **Problem Solving**: Real projects with working solutions
-✅ **Continuous Learning**: Modern implementations in progress
+- **Full-Stack Development** — frontend through backend, REST APIs, database design
+- **Modern Stack** — SvelteKit, TypeScript, Prisma, Zod, Vite
+- **AI Integration** — live Claude API features, built with Claude Code
+- **Quality Assurance** — automated testing, E2E and API coverage
+- **Auth & Security** — JWT, httpOnly cookies, role-based access, bfcache protection
+- **Continuous Learning** — from vanilla JS to modern full-stack in one repo
+
+---
 
 ## 📝 Notes
 
-- Exam Project is a full-stack project; run it locally to see the backend API
-- Testing examples include real test patterns and QA strategies
-- Modern versions are under development (stubs available)
-- Alphabet Game demonstrates vanilla JavaScript and browser storage
-
-## 🔗 Contact & Links
-
-- GitHub: [Your GitHub link]
-- LinkedIn: [Your LinkedIn]
-- Email: [Your email]
+- Classic Exam Project runs live at [mista-ai.up.railway.app/admin/login](https://mista-ai.up.railway.app/admin/login) — credentials: `admin@noroff.no` / `P@ssword2023`
+- Modern Exam Project is hosted on Render (free tier — may take 30–60s to wake)
+- Modern Semester Project dist is pre-built and served directly from the repo
+- Alphabet Game uses only vanilla JS and browser localStorage — no dependencies
 
 ---
 
 **Last updated**: May 2026
-**Portfolio ready for**: Software Engineer & QA Engineer roles
-
+**Open to**: Software Engineer, QA Engineer, AI Engineer & AI-integrated developer roles
