@@ -14,7 +14,7 @@
   let returnTime = ''
   let formError = ''
 
-  // Late driver toast
+  // Late driver toast — keyed by driver id (UUID), not phone
   let lateToast: DeliveryDriver | null = null
   const shownToasts = new Map<string, Date>()
   const dismissedToasts = new Map<string, Date>()
@@ -65,24 +65,24 @@
       const [h, m] = d.returnTime.split(':').map(Number)
       const ret = new Date(); ret.setHours(h, m, 0, 0)
       if (ret >= now) continue
-      const shown = shownToasts.get(d.phone)
-      const dismissed = dismissedToasts.get(d.phone)
+      const shown = shownToasts.get(d.id)
+      const dismissed = dismissedToasts.get(d.id)
       if (shown && shown > ret) continue
       if (dismissed && dismissed > ret) continue
       lateToast = d
-      shownToasts.set(d.phone, now)
+      shownToasts.set(d.id, now)
       break
     }
   }
 
   function dismissToast() {
-    if (lateToast) dismissedToasts.set(lateToast.phone, new Date())
+    if (lateToast) dismissedToasts.set(lateToast.id, new Date())
     lateToast = null
   }
 
   function clearRowFromToast() {
     if (!lateToast) return
-    drivers = drivers.filter(d => d.phone !== lateToast!.phone)
+    drivers = drivers.filter(d => d.id !== lateToast!.id)
     lateToast = null
   }
 
