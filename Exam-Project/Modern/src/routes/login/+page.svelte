@@ -15,7 +15,7 @@
 
 <svelte:head><title>Login — WDT Admin</title></svelte:head>
 
-<a href="https://mistakronos.github.io/Personal-Projects/" class="portfolio-back">&#8592; Portfolio</a>
+<a href="https://mista-ai.up.railway.app/index.html" class="portfolio-back">&#8592; Portfolio</a>
 
 <div class="shell">
   <div class="card">
