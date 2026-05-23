@@ -50,7 +50,7 @@
           <div class="user-role">{data.user.role}</div>
         </div>
       </div>
-      <a href="/logout" class="btn btn-ghost btn-sm signout-link">Sign out</a>
+      <a href="/logout" data-sveltekit-reload class="btn btn-ghost btn-sm signout-link">Sign out</a>
     </div>
   </aside>
 
