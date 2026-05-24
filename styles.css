@@ -318,10 +318,69 @@ h1 {
   color: #a8c3ff;
 }
 
+/* Work experience badge */
+.badge--work {
+  background: rgba(22, 110, 80, 0.12);
+  color: #145c3a;
+}
+
 /* Infrastructure badges */
 .badge--infra {
   background: rgba(22, 110, 80, 0.12);
   color: #145c3a;
+}
+
+/* Experience card */
+.experience-card {
+  border-left: 4px solid #3f74d6 !important;
+  padding-left: 28px;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.experience-header h3 {
+  margin: 8px 0 4px;
+}
+
+.experience-company {
+  margin: 0 !important;
+  font-size: 0.9rem !important;
+  color: #4261a8 !important;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.experience-skills {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.skill-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.skill-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #5a6f99;
+  min-width: 90px;
+}
+
+.skill-group .tech-tags {
+  margin: 0 !important;
 }
 
 /* 3-col grid for hosting section */
