@@ -66,6 +66,8 @@
     gap: 0.25rem;
     transition: color 150ms;
     white-space: nowrap;
+    padding-right: 1.25rem;
+    border-right: 1px solid var(--border);
   }
   .back-link:hover { color: var(--text); }
 
