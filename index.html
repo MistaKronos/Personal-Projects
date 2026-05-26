@@ -254,22 +254,24 @@
     <span id="theme-label">Dark mode</span>
   </button>
   <script>
-    const toggle = document.getElementById('theme-toggle');
-    const moon = document.getElementById('theme-icon-moon');
-    const sun = document.getElementById('theme-icon-sun');
-    const label = document.getElementById('theme-label');
-    function applyTheme(dark) {
-      document.body.classList.toggle('dark-theme', dark);
-      moon.hidden = dark;
-      sun.hidden = !dark;
-      label.textContent = dark ? 'Light mode' : 'Dark mode';
-    }
-    applyTheme(localStorage.getItem('theme') === 'dark');
-    toggle.addEventListener('click', () => {
-      const dark = !document.body.classList.contains('dark-theme');
-      applyTheme(dark);
-      localStorage.setItem('theme', dark ? 'dark' : 'light');
-    });
+    (function () {
+      const themeToggle = document.getElementById('theme-toggle');
+      const themeMoon = document.getElementById('theme-icon-moon');
+      const themeSun = document.getElementById('theme-icon-sun');
+      const themeLabel = document.getElementById('theme-label');
+      function applyTheme(dark) {
+        document.body.classList.toggle('dark-theme', dark);
+        themeMoon.hidden = dark;
+        themeSun.hidden = !dark;
+        themeLabel.textContent = dark ? 'Light mode' : 'Dark mode';
+      }
+      applyTheme(localStorage.getItem('theme') === 'dark');
+      themeToggle.addEventListener('click', function () {
+        const dark = !document.body.classList.contains('dark-theme');
+        applyTheme(dark);
+        localStorage.setItem('theme', dark ? 'dark' : 'light');
+      });
+    })();
   </script>
 </body>
 </html>
