@@ -35,7 +35,7 @@ body {
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  object-position: center 15%;
+  object-position: center center;
   border: 3px solid rgba(255, 255, 255, 0.75);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   margin-bottom: 20px;
@@ -591,4 +591,146 @@ h1 {
 #chat-form button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* ── Theme toggle button ── */
+#theme-toggle {
+  position: fixed;
+  top: 16px;
+  right: 20px;
+  z-index: 999;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(30, 50, 140, 0.6);
+  backdrop-filter: blur(8px);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+#theme-toggle:hover {
+  background: rgba(30, 50, 140, 0.85);
+  transform: scale(1.08);
+}
+
+/* ── Dark theme ── */
+body.dark-theme {
+  background: linear-gradient(180deg, #060d24 0%, #0d1117 18%, #0d1117 100%);
+  color: #e6edf3;
+}
+
+body.dark-theme #theme-toggle {
+  background: rgba(20, 30, 70, 0.85);
+  border-color: rgba(88, 166, 255, 0.3);
+}
+
+body.dark-theme .site-menu a {
+  background: rgba(88, 166, 255, 0.1);
+  color: #7eb8ff;
+}
+
+body.dark-theme .site-menu a:hover,
+body.dark-theme .site-menu a:focus-visible {
+  background: rgba(88, 166, 255, 0.2);
+}
+
+body.dark-theme .section-title {
+  color: #e6edf3;
+}
+
+body.dark-theme .section-subtitle {
+  color: #8b949e;
+}
+
+body.dark-theme .card {
+  background: #161b22;
+  border-color: #30363d;
+  border-top: 3px solid #58a6ff;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-theme .card:hover {
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-theme .card.coming-soon {
+  background: #0d1117;
+}
+
+body.dark-theme .card h3 {
+  color: #e6edf3;
+}
+
+body.dark-theme .card p {
+  color: #8b949e;
+}
+
+body.dark-theme .tech-tags code {
+  background: rgba(88, 166, 255, 0.12);
+  color: #58a6ff;
+}
+
+body.dark-theme .badge {
+  background: rgba(88, 166, 255, 0.15);
+  color: #7eb8ff;
+}
+
+body.dark-theme .badge--work {
+  background: rgba(63, 185, 80, 0.15);
+  color: #3fb950;
+}
+
+body.dark-theme .experience-card {
+  border-left: 4px solid #58a6ff !important;
+}
+
+body.dark-theme .experience-company {
+  color: #58a6ff !important;
+}
+
+body.dark-theme .skill-label {
+  color: #8b949e;
+}
+
+body.dark-theme .notice {
+  color: #6e7681;
+}
+
+body.dark-theme .footer {
+  color: #6e7681;
+}
+
+body.dark-theme #chat-panel {
+  background: #161b22;
+  border-color: #30363d;
+}
+
+body.dark-theme #chat-messages {
+  background: #0d1117;
+}
+
+body.dark-theme .chat-msg--ai {
+  background: #161b22;
+  border-color: #30363d;
+  color: #e6edf3;
+}
+
+body.dark-theme #chat-form {
+  background: #161b22;
+  border-color: #30363d;
+}
+
+body.dark-theme #chat-input {
+  background: #0d1117;
+  border-color: #30363d;
+  color: #e6edf3;
+}
+
+body.dark-theme #chat-input:focus {
+  border-color: #58a6ff;
 }
