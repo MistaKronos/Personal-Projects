@@ -25,10 +25,11 @@ As a software engineer with QA/Test Engineer background, I take quality assuranc
 
 ## Tools & Technologies
 
-- **UI Testing**: Playwright, Cypress
-- **API Testing**: REST Client, Postman, Jest
-- **Test Framework**: Jest, Mocha
-- **Coverage Tools**: Istanbul/nyc
+- **UI Testing**: Playwright
+- **API Testing**: REST Client, Postman, Jest, Supertest, Karate DSL
+- **Performance Testing**: Gatling, Artillery
+- **Test Management**: TestRail
+- **Test Framework**: Jest
 
 ## How to use these examples
 
