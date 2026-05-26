@@ -10,7 +10,7 @@
   <main class="page-shell">
     <header class="hero">
       <p class="eyebrow">Sindre Steen Andersen</p>
-      <h1>Software Engineer & QA Specialist</h1>
+      <h1>Software & AI Engineer</h1>
       <p class="subtitle">This portfolio shows my growth as a developer — from academic foundations to modern, AI-assisted builds. Two versions of each project: where I started, and where I am now.</p>
       <div class="social-links">
         <a class="social-link" href="https://github.com/MistaKronos" target="_blank" rel="noopener noreferrer">
@@ -25,6 +25,7 @@
     </header>
 
     <nav class="site-menu" aria-label="Portfolio navigation">
+      <a href="#experience">Experience</a>
       <a href="#classic">Where I Started</a>
       <a href="#modern">Where I Am Now</a>
       <a href="#ai">AI</a>
@@ -32,6 +33,33 @@
       <a href="#games">Fun Stuff</a>
       <a href="#hosting">Hosting</a>
     </nav>
+
+    <!-- PROFESSIONAL EXPERIENCE -->
+    <section id="experience" class="portfolio-section">
+      <h2 class="section-title">Professional Experience</h2>
+      <p class="section-subtitle">Enterprise software — full ownership of automated testing and deployment infrastructure.</p>
+      <article class="card experience-card">
+        <div class="experience-header">
+          <div>
+            <span class="badge badge--work">Full-Time</span>
+            <h3>Test Engineer &mdash; Visma Enterprise AS</h3>
+            <p class="experience-company">Procurement &amp; Logistics Module</p>
+          </div>
+        </div>
+        <p>Sole owner of the automated test suite for the Procurement &amp; Logistics module. Responsible for running, maintaining, and expanding end-to-end black box test coverage across the full feature set — from purchase orders and goods receipt to logistics workflows. In practice the role went well beyond pure testing and involved significant ownership: if tests weren't passing, it was on me to find out why and fix it.</p>
+        <p>Carried substantial infrastructure responsibility alongside the testing work. When frontend or backend builds went offline, I would locate the relevant GitHub Actions YAML, trigger the build, track down the deployment in Octopus Deploy, and promote it to <em>Atlantis</em> — our acceptance test environment — so automated tests could resume. Also managed test environment data through manual database backups and restores, and used feature flags to enable or disable features mid-sprint without touching code.</p>
+        <div class="experience-skills">
+          <div class="skill-group">
+            <span class="skill-label">Testing</span>
+            <p class="tech-tags"><code>Black Box Testing</code> <code>E2E Automation</code> <code>Nightly Test Runs</code> <code>Test Ownership</code></p>
+          </div>
+          <div class="skill-group">
+            <span class="skill-label">Infrastructure</span>
+            <p class="tech-tags"><code>GitHub Actions</code> <code>Octopus Deploy</code> <code>DB Backup &amp; Restore</code> <code>Feature Flags</code> <code>Environment Management</code></p>
+          </div>
+        </div>
+      </article>
+    </section>
 
     <!-- CLASSIC PROJECTS -->
     <section id="classic" class="portfolio-section">
@@ -52,7 +80,7 @@
           <p>A full-stack e-commerce admin panel with product management, user roles, order tracking, and JWT auth. Written with Express, EJS templates, Sequelize, and MySQL — the old way.</p>
           <p class="tech-tags"><code>Node.js</code> <code>Express</code> <code>MySQL</code> <code>JWT</code></p>
           <div class="card-actions">
-            <a class="button" href="https://personal-projects-production-3413.up.railway.app/admin/login" target="_blank" rel="noopener noreferrer">View Exam Project</a>
+            <a class="button" href="https://mista-ai.up.railway.app/admin/login" target="_blank" rel="noopener noreferrer">View Exam Project</a>
             <a class="button button-outline" href="Exam-Project/Classic/index.html">Case Study</a>
           </div>
         </article>
@@ -185,7 +213,7 @@
     </section>
 
     <footer class="footer">
-      <p>Sindre Steen Andersen &mdash; Software Engineer &amp; QA Specialist &mdash; 2023&ndash;2026</p>
+      <p>Sindre Steen Andersen &mdash; Software &amp; AI Engineer &mdash; 2023&ndash;2026</p>
     </footer>
   </main>
 
