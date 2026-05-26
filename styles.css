@@ -596,26 +596,29 @@ h1 {
 /* ── Theme toggle button ── */
 #theme-toggle {
   position: fixed;
-  top: 16px;
-  right: 20px;
+  top: 18px;
+  right: 24px;
   z-index: 999;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  background: rgba(30, 50, 140, 0.6);
-  backdrop-filter: blur(8px);
-  color: white;
-  cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
-  transition: background 0.2s ease, transform 0.2s ease;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(30, 50, 140, 0.65);
+  backdrop-filter: blur(10px);
+  color: white;
+  font: 600 0.85rem/1 Inter, system-ui, sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 #theme-toggle:hover {
-  background: rgba(30, 50, 140, 0.85);
-  transform: scale(1.08);
+  background: rgba(30, 50, 140, 0.9);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
 }
 
 /* ── Dark theme ── */
@@ -625,8 +628,8 @@ body.dark-theme {
 }
 
 body.dark-theme #theme-toggle {
-  background: rgba(20, 30, 70, 0.85);
-  border-color: rgba(88, 166, 255, 0.3);
+  background: rgba(15, 22, 60, 0.85);
+  border-color: rgba(88, 166, 255, 0.35);
 }
 
 body.dark-theme .site-menu a {
