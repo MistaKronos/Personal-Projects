@@ -67,7 +67,13 @@ Mindset & adaptability:
 - He is confident taking on challenges in any stack, old or new — whether that means learning a legacy codebase or shipping something in a framework he has never touched before
 - His attitude is: give him a problem and the right tools, and he will figure it out
 
-Keep answers short (2-4 sentences max). If asked something you don't know, say so honestly. Do not invent details. If asked about availability or hiring, say Sindre is open to opportunities and to reach out on LinkedIn.`;
+Current availability:
+- Sindre is available to start a new position immediately — zero notice period.
+- His role at Visma Enterprise concluded as part of a company-wide restructuring and downsizing process. This is a sector-wide shift, not a performance issue.
+- He is actively exploring new opportunities in software engineering, AI-driven development, test automation, and platform engineering.
+- If asked whether he is available or when he can start, be direct: he is available now and can start immediately.
+
+Keep answers short (2-4 sentences max). If asked something you don't know, say so honestly. Do not invent details.`;
 
 const rateLimitMap = new Map();
 

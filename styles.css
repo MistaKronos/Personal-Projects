@@ -300,6 +300,56 @@ h1 {
   font-size: 0.95rem;
 }
 
+/* Availability banner */
+.availability-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin: 24px 0 0;
+  padding: 18px 24px;
+  border-radius: 16px;
+  background: rgba(22, 110, 80, 0.07);
+  border: 1px solid rgba(22, 110, 80, 0.22);
+}
+
+.availability-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #1a7a50;
+  flex-shrink: 0;
+  margin-top: 4px;
+  box-shadow: 0 0 0 3px rgba(22, 110, 80, 0.2);
+  animation: availability-pulse 2.4s ease infinite;
+}
+
+@keyframes availability-pulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(22, 110, 80, 0.2); }
+  50%       { box-shadow: 0 0 0 7px rgba(22, 110, 80, 0.06); }
+}
+
+.availability-text {
+  color: #145c3a;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.availability-text strong {
+  font-weight: 700;
+}
+
+/* Availability note inside experience card */
+.experience-availability {
+  font-size: 0.85rem !important;
+  color: #145c3a !important;
+  font-style: italic;
+  line-height: 1.6;
+  border-top: 1px solid rgba(22, 110, 80, 0.15);
+  padding-top: 14px;
+  margin-top: 4px !important;
+}
+
 @media (max-width: 520px) {
   .page-shell {
     padding: 28px 16px 40px;
@@ -737,4 +787,25 @@ body.dark-theme #chat-input {
 
 body.dark-theme #chat-input:focus {
   border-color: #58a6ff;
+}
+
+/* Dark mode — availability banner */
+body.dark-theme .availability-banner {
+  background: rgba(46, 160, 67, 0.09);
+  border-color: rgba(46, 160, 67, 0.25);
+}
+
+body.dark-theme .availability-dot {
+  background: #3fb950;
+  box-shadow: 0 0 0 3px rgba(46, 160, 67, 0.25);
+}
+
+body.dark-theme .availability-text {
+  color: #3fb950;
+}
+
+/* Dark mode — experience availability note */
+body.dark-theme .experience-availability {
+  color: #3fb950 !important;
+  border-top-color: rgba(46, 160, 67, 0.2);
 }
